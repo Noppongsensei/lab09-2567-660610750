@@ -11,7 +11,7 @@ import { useState } from "react";
 export default function Home() {
   // Define the interface of task-item object
   interface TaskItem {
-    id: string;
+    id: number;
     title: string;
     completed: boolean;
   }
