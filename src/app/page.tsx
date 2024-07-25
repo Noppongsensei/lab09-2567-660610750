@@ -16,31 +16,32 @@ export default function Home() {
     completed: boolean;
   }
 
-  // useState hook for an array of task-item objects
-  const [tasks, setTasks] = useState<TaskItem[]>([]);
+    // useState hook for an array of task-item objects
+    const [tasks, setTasks] = useState<TaskItem[]>([]);
 
-  // Define the function with proper type
-  const addTask = (newTaskTitle: string) => {
-    const newTask: TaskItem = { id: nanoid(), title: newTaskTitle, completed: false };
-    const newTasks = [...tasks, newTask];
-    setTasks(newTasks);
-  };
-
-  // Define the function with proper type
-  const deleteTask = (taskId: string) => {
-    const newTasks = tasks.filter((task) => task.id !== taskId);
-    setTasks(newTasks);
-  };
-
-  // Define the function with proper type
-  const toggleDoneTask = (taskId: string) => {
-    const newTasks = structuredClone(tasks);
-    const task = newTasks.find((x) => x.id === taskId);
-    if (task) {
+    // Define the function with proper type
+    const addTask = (newTaskTitle) => {
+      const newTask = { id: nanoid(), title: newTaskTitle, completed: false };
+      const newTasks = [...tasks, newTask];
+      setTasks(newTasks);
+    };
+  
+    // Define the function with proper type
+    const deleteTask = (taskId) => {
+      const newTasks = tasks.filter((task) => task.id !== taskId);
+      setTasks(newTasks);
+    };
+  
+    // Define the function with proper type
+    const toggleDoneTask = (taskId) => {
+      //structuredClone will copy an array or an object "deeply"
+      //So objects within an object will be copied too
+      const newTasks = structuredClone(tasks);
+      //search for a task based on condition
+      const task = newTasks.find((x) => x.id === taskId);
       task.completed = !task.completed;
-    }
-    setTasks(newTasks);
-  };
+      setTasks(newTasks);
+    };
 
   return (
     // Main container
