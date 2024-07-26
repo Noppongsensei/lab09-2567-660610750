@@ -1,11 +1,18 @@
 import React from "react";
 
-export default function Footer(props) {
+interface FooterProps {
+  year: string;
+  fullName: string;
+  studentId: string;
+}
+
+export default function Footer({ year, fullName, studentId }: FooterProps) {
   return (
     <div className="mt-3">
       <p className="text-secondary text-center">
-        Copyright © {props.year} {props.fullName} {props.studentId}
+        Copyright © {year} {fullName} {studentId}
       </p>
     </div>
   );
 }
+
